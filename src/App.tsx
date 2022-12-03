@@ -5,7 +5,6 @@ const App: FC = () => {
 
   const handlePageNumber = (value: number) => {
     console.log("value", value);
-    
   }
 
   return (

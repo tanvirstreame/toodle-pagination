@@ -1,7 +1,7 @@
 import { useState, FC } from 'react';
 import PageNumber from './PageNumber';
 import PageText from './PageText';
-import './pagination.css'
+import './css/pagination.css'
 
 const Paginantion: FC<{
   pageRangeDisplayed?: number,
