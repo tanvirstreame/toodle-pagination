@@ -21,6 +21,9 @@ const Paginantion: FC<{
     previousLabel = "Prevous"
   }) => {
     const [active, setActive] = useState(1);
+    const [index, setIndex] = useState({
+      start: 1, end: pageRangeDisplayed
+    });
     const handleNumberClick = (value: number) => {
       setActive(value);
       handlePageNumber(value);
@@ -29,12 +32,47 @@ const Paginantion: FC<{
     const handleNextPrevClick = (value: string) => {
       if (value === "next" && total > active) {
         setActive(active + 1);
+        if (active + 1 > index.end) {
+          setIndex({
+            start: active + 1,
+            end: index.end + pageRangeDisplayed
+          })
+        }
         handlePageNumber(active + 1);
       }
       else if (value === "previous" && active > 1) {
         setActive(active - 1);
+        if (active === total) {
+          setIndex({
+            start: total - pageRangeDisplayed + 1,
+            end: total
+          })
+        }
+        else if (active - 1 < index.start) {
+          setIndex({
+            start: active - pageRangeDisplayed,
+            end: index.end - pageRangeDisplayed
+          })
+        }
         handlePageNumber(active - 1);
       }
+    }
+
+    const itemNumber = () => {
+      let divArray = [];
+      for (let i = index.start; i < index.end + 1; i++) {
+        if (i !== total) {
+          divArray.push(
+            <PageNumber
+              onClick={handleNumberClick}
+              key={i}
+              isActive={active === i}
+              value={i}
+            />
+          )
+        }
+      }
+      return divArray;
     }
 
     return (
@@ -44,18 +82,7 @@ const Paginantion: FC<{
           value={"previous"}
           text={previousLabel}
         />
-
-        {Array.from(Array(pageRangeDisplayed), (e, i) => {
-          if (i + 1 !== total) {
-            return <PageNumber
-              onClick={handleNumberClick}
-              key={i + 1}
-              isActive={active === i + 1}
-              value={i + 1}
-            />
-          }
-
-        })}
+        {itemNumber()}
         {breakLabel} <PageNumber
           onClick={handleNumberClick}
           isActive={active === total}
