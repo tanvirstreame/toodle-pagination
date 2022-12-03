@@ -1,6 +1,7 @@
 import { useState, FC } from 'react';
 import PageNumber from './PageNumber';
 import PageText from './PageText';
+import './pagination.css'
 
 const Paginantion: FC<{
   pageRangeDisplayed?: number,
@@ -37,7 +38,7 @@ const Paginantion: FC<{
     }
 
     return (
-      <div className="App">
+      <div className="pagination-component">
         <PageText
           onClick={handleNextPrevClick}
           value={"previous"}
