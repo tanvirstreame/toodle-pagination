@@ -1,0 +1,14 @@
+.page-number-component {
+  padding: 5px;
+  border-style: solid;
+  border-width: thin;
+  margin-right: 5px ;
+  cursor: pointer;
+  user-select: unset; 
+}
+
+.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
