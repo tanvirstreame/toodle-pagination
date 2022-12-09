@@ -3,7 +3,7 @@ import PageNumber from './PageNumber';
 import PageText from './PageText';
 import './css/pagination.css'
 
-const Paginantion: FC<{
+const Pagination: FC<{
   pageRangeDisplayed?: number,
   total?: number,
   handlePageNumber: (value: number) => void,
@@ -97,4 +97,4 @@ const Paginantion: FC<{
     );
   }
 
-export default Paginantion;
+export default Pagination;

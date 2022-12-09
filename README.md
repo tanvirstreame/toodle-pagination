@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Paginantion 
+      <Pagination 
         nextLabel="next >"
         previousLabel="< previous"
         pageRangeDisplayed={10} 
